@@ -29,11 +29,18 @@ function! s:RegisterDartServer() abort
       \     'initializationOptions': {
       \       'onlyAnalyzeProjectsWithOpenFiles': v:true
       \     }
-      \   }
+      \   },
+      \   'textDocument/documentHighlight': function('<SID>SkipYamlRequests'),
+      \   'textDocument/completion': function('<SID>SkipYamlRequests'),
       \ }
       \}
   call RegisterLanguageServer('dart', l:config)
   call RegisterLanguageServer('yaml', 'Dart Analysis Server')
+endfunction
+
+function! s:SkipYamlRequests(method, params) abort
+  return a:params.textDocument.uri =~? '\v\.yaml$' ?
+      \ lsc#config#skip() : a:params
 endfunction
 
 call s:RegisterDartServer()
