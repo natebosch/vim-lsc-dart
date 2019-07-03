@@ -4,7 +4,7 @@ endif
 let s:initialized = v:true
 
 function! s:FindCommand() abort
-  let l:dart = exepath('dart')
+  let l:dart = resolve(exepath('dart'))
   if len(l:dart) == 0
     echoerr 'Could not find an executable `dart`'
     return v:null
