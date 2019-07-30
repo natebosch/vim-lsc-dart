@@ -15,7 +15,13 @@ function! s:FindCommand() abort
     echoerr 'Could not find analysis server snapshot at '.l:snapshot
     return v:null
   endif
-  return ['dart', l:snapshot, '--lsp']
+  let l:cmd = ['dart', l:snapshot, '--lsp']
+  let l:sdk_root = fnamemodify(l:bin, ':h')
+  let l:language_model = l:sdk_root.'/model/lexeme'
+  if isdirectory(l:language_model)
+    call add(l:cmd, '--completion-model='.l:language_model)
+  endif
+  return l:cmd
 endfunction
 
 function! s:RegisterDartServer() abort
