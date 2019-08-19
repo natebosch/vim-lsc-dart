@@ -21,6 +21,11 @@ function! s:FindCommand() abort
   if isdirectory(l:language_model)
     call add(l:cmd, '--completion-model='.l:language_model)
   endif
+  if get(g:, 'lsc_dart_enable_log', v:false)
+    let l:log_file = tempname()
+    call add(l:cmd, '--instrumentation-log-file='.l:log_file)
+    echom 'Dart instrumentation log: '.l:log_file
+  endif
   return l:cmd
 endfunction
 
