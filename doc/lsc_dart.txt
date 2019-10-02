@@ -1,0 +1,21 @@
+*lsc-dart*  Language Server Client config for Dart
+
+INTRODUCTION                                    *lsc-dart-intro*
+
+vim-lsc-dart configures the vim-lsc plugin to run the Dart Analysis Server for
+`dart` and `yaml` file types. This plugin requires either `dart` or `flutter` to
+exist on your path.
+
+See https://github.com/natebosch/vim-lsc for information about the vim-lsc
+plugin.
+
+
+CONFIGURATION                                   *lsc-dart-configure*
+
+                                                *lsc-dart-configure-log*
+                                                *g:lsc_dart_enable_log*
+Enable the Analysis Server instrumentation log file by setting
+`g:lsc_dart_enable_log` to `v:true`. When enabled the analysis server will write
+a log to a new temp file. This file will get cleaned up at vim exit.
+
+ vim:tw=78:sw=4:ts=8:ft=help:norl:
