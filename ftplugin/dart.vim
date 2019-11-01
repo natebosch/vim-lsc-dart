@@ -58,6 +58,7 @@ function! s:RegisterDartServer() abort
       \}
   call RegisterLanguageServer('dart', l:config)
   call RegisterLanguageServer('yaml', 'Dart Analysis Server')
+  call RegisterLanguageServer('html', 'Dart Analysis Server')
 endfunction
 
 function! s:SkipYamlRequests(method, params) abort
