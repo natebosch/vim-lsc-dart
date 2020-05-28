@@ -31,7 +31,7 @@ function! s:FindCommand() abort
     echoerr 'Could not find analysis server snapshot at '.l:snapshot
     return v:null
   endif
-  let l:cmd = [l:dart, l:snapshot, '--lsp']
+  let l:cmd = [l:dart, l:snapshot, '--lsp', '--client-id', 'vim']
   let l:sdk_root = fnamemodify(l:bin, ':h')
   let l:language_model = l:sdk_root.'/model/lexeme'
   if isdirectory(l:language_model)
