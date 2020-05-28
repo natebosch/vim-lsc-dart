@@ -41,6 +41,12 @@ function! s:FindCommand() abort
     call add(l:cmd, '--instrumentation-log-file='.l:log_file)
     echom 'Dart instrumentation log: '.l:log_file
   endif
+  if get(g:, 'lsc_dart_enable_wirelog', v:false)
+    let l:in_log = tempname()
+    let l:out_log = tempname()
+    let l:cmd = ['sh', '-c', 'tee '.l:in_log.' | '.join(l:cmd, ' ').' | tee '.l:out_log]
+    echom 'Dart Analaysis wire logs: In: '.l:in_log.' Out: '.l:out_log
+  endif
   return l:cmd
 endfunction
 
