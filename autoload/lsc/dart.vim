@@ -32,9 +32,11 @@ function! s:FindCommand() abort
     return v:null
   endif
   let l:cmd = [l:dart, l:snapshot, '--lsp', '--client-id', 'vim']
-  let l:language_model = l:bin.'/model/lexeme'
-  if isdirectory(l:language_model)
-    call add(l:cmd, '--completion-model='.l:language_model)
+  if get(g:, 'lsc_dart_enable_completion_ml', v:true)
+    let l:language_model = l:bin.'/model/lexeme'
+    if isdirectory(l:language_model)
+      call add(l:cmd, '--completion-model='.l:language_model)
+    endif
   endif
   if get(g:, 'lsc_dart_enable_log', v:false)
     let l:log_file = tempname()
