@@ -47,14 +47,20 @@ function! s:FindCommand() abort
 endfunction
 
 function! s:FindDart() abort
-  if executable('dart') | return resolve(exepath('dart')) | endif
+  if executable('dart')
+    let l:dart = resolve(exepath('dart'))
+    let l:bin = fnamemodify(l:dart, ':h')
+    if !executable(l:bin.'/flutter')
+      return l:dart
+    endif
+  endif
   if executable('flutter')
     let l:flutter = resolve(exepath('flutter'))
     let l:flutter_bin = fnamemodify(l:flutter,':h')
     let l:dart = l:flutter_bin.'/cache/dart-sdk/bin/dart'
     if executable(l:dart) | return l:dart | endif
   endif
-  echoerr 'Could not find a `dart` executable'
+  echoerr 'Could not find the Dart SDK.'
 endfunction
 
 
