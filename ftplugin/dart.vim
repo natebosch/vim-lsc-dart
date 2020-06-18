@@ -8,7 +8,7 @@ command! -buffer -nargs=0 DartAnalysisServerDiagnostics
 
 function! s:DartDiagnosticServer() abort
   call lsc#server#userCall('dart/diagnosticServer', v:null,
-      \ function("<SID>EchoServerUrl"))
+      \ function('<SID>EchoServerUrl'))
 endfunction
 
 function! s:EchoServerUrl(result) abort
