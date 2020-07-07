@@ -17,3 +17,6 @@ endfunction
 
 command! -buffer -nargs=0 DartToggleMethodBodyType
     \ LSClientFindCodeActions '\v\cConvert to (expression<bar>block) body'
+
+command! -buffer -nargs=0 DartOrganizeImports
+    \ LSClientFindCodeActions '\v\cOrganize Imports'

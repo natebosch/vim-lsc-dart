@@ -24,4 +24,17 @@ Enable the machine learning model for completion by passing the
 SDK. Defaults to `v:true`, set to `v:false` to disable machine learning
 completion suggestions.
 
+COMMANDS                                        *lsc-dart-commands*
+
+                                                *:DartToggleMethodBodyType*
+With the cursor on either a `=>` or a `return` which is the only statement in a
+method, run `:DartToggleMethodBodyType` to flip between an expression bodied
+method (`=>` method) and a block bodied method (a method with `{}` and a
+`return` statement).
+
+                                                *:DartOrganizeImports*
+Runs the "Organize Imports" code action to sort imports in the standard order
+and remove unused mports. The cursor may be anywhere in a Dart file.
+
+
  vim:tw=78:sw=4:ts=8:ft=help:norl:
