@@ -3,9 +3,7 @@ Registers the Dart Analysis Server as a language server with
 
 # Commands
 
-`:DartAnalysisServerDiagnostics`. Request that the analyzer starts a diagnostic
-server and report the port is is using on localhost. Visit the reported URL in a
-browser to see information about the running analysis server.
+`:DartOrganizeImports`. Sort and remove unused imports in the current file.
 
 `:DartToggleMethodBodyType`. With the cursor on either a `return` statement
 (when it is the only statement in a method block) or on the `=>` in a method

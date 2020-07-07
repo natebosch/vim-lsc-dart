@@ -36,5 +36,11 @@ method (`=>` method) and a block bodied method (a method with `{}` and a
 Runs the "Organize Imports" code action to sort imports in the standard order
 and remove unused mports. The cursor may be anywhere in a Dart file.
 
+                                                *:DartAnalysisServerDiagnostics*
+Ask the Analysis Server to start a web server with a UI showing diagnostics
+about the running server, including configuration and the server's view of file
+contents. The URL on `localhost` for the server will be reported once it is
+running. This may be useful if things are not behaving as expected.
+
 
  vim:tw=78:sw=4:ts=8:ft=help:norl:
