@@ -47,6 +47,11 @@ function! s:FindCommand() abort
 endfunction
 
 function! s:FindDart() abort
+  if !executable('dart') && !executable('flutter')
+    echoerr 'Could not find either a `dart` or `flutter` command. '
+        \.'Your $PATH must contain either the Dart of Flutter bin directory.'
+    return v:false
+  endif
   if executable('dart')
     let l:dart = resolve(exepath('dart'))
     let l:bin = fnamemodify(l:dart, ':h')
@@ -54,12 +59,10 @@ function! s:FindDart() abort
       return l:dart
     endif
   endif
-  if executable('flutter')
-    let l:flutter = resolve(exepath('flutter'))
-    let l:flutter_bin = fnamemodify(l:flutter,':h')
-    let l:dart = l:flutter_bin.'/cache/dart-sdk/bin/dart'
-    if executable(l:dart) | return l:dart | endif
-  endif
+  let l:flutter = resolve(exepath('flutter'))
+  let l:flutter_bin = fnamemodify(l:flutter,':h')
+  let l:dart = l:flutter_bin.'/cache/dart-sdk/bin/dart'
+  if executable(l:dart) | return l:dart | endif
   echoerr 'Could not find the Dart SDK.'
 endfunction
 
