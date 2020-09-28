@@ -24,6 +24,20 @@ Enable the machine learning model for completion by passing the
 SDK. Defaults to `v:true`, set to `v:false` to disable machine learning
 completion suggestions.
 
+                                                *g:lsc_dart_sdk_path*
+This plugin should auto detect the location of the Dart SDK as long as there
+is a `dart` or `flutter` command available in your `$PATH`. If the detection
+fails set `g:lsc_dart_sdk_path` to the path to the Dart SDK directory. This
+should be the directory above the `/bin/dart` executable. Flutter has it's own
+`dart` executable in addition to the one in the Dart SDK,
+`g:lsc_dart_sdk_path` should be the path for the cached Dart SDK, not the
+flutter SDK. For example, if you are a flutter user and your flutter SDK is
+installed to
+`~/development/flutter` use:
+>
+ let g:lsc_dart_sdk_path = '~/development/flutter/bin/cache/dart-sdk'
+<
+
 COMMANDS                                        *lsc-dart-commands*
 
                                                 *:DartToggleMethodBodyType*
