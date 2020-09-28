@@ -23,9 +23,17 @@ function! lsc#dart#register() abort
 endfunction
 
 function! s:FindCommand() abort
-  let l:dart = s:FindDart()
-  if type(l:dart) != type('') | return v:null | endif
-  let l:bin = fnamemodify(l:dart, ':h')
+  if exists('g:lsc_dart_sdk_path')
+    let l:bin = expand(g:lsc_dart_sdk_path).'/bin'
+    let l:dart = l:bin.'/dart'
+    if !executable(l:dart)
+      echoerr 'The path "'.l:dart.'" is not executable.'
+    endif
+  else
+    let l:dart = s:FindDart()
+    if type(l:dart) != type('') | return v:null | endif
+    let l:bin = fnamemodify(l:dart, ':h')
+  endif
   let l:snapshot = l:bin.'/snapshots/analysis_server.dart.snapshot'
   if !filereadable(l:snapshot)
     echoerr 'Could not find analysis server snapshot at '.l:snapshot
