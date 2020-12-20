@@ -10,8 +10,6 @@ function! lsc#dart#register() abort
       \       'onlyAnalyzeProjectsWithOpenFiles': v:true
       \     }
       \   },
-      \   'textDocument/documentHighlight': function('<SID>SkipYamlRequests'),
-      \   'textDocument/completion': function('<SID>SkipYamlRequests'),
       \ },
       \ 'notifications': {
       \   '$/analyzerStatus': function('<SID>HandleStatus'),
@@ -72,12 +70,6 @@ function! s:FindDart() abort
   let l:dart = l:flutter_bin.'/cache/dart-sdk/bin/dart'
   if executable(l:dart) | return l:dart | endif
   echoerr 'Could not find the Dart SDK.'
-endfunction
-
-
-function! s:SkipYamlRequests(method, params) abort
-  return a:params.textDocument.uri =~? '\v\.yaml$' ?
-      \ lsc#config#skip() : a:params
 endfunction
 
 function! s:HandleStatus(method, params) abort
