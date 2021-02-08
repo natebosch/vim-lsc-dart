@@ -7,7 +7,8 @@ function! lsc#dart#register() abort
       \ 'notifications': {
       \   '$/analyzerStatus': function('<SID>HandleStatus'),
       \ },
-      \ 'WorkspaceRoot': function('<SID>WorkspaceRoot')
+      \ 'WorkspaceRoot':
+      \   lsc#workspace#byMarker(['pubspec.yaml', '.dart_tool/', 'BUILD'])
       \}
   call RegisterLanguageServer('dart', l:config)
   call RegisterLanguageServer('yaml', 'Dart Analysis Server')
@@ -68,11 +69,4 @@ endfunction
 
 function! s:HandleStatus(method, params) abort
   let g:dart_analyzer_status = a:params.isAnalyzing
-endfunction
-
-function! s:WorkspaceRoot(file_path) abort
-  let l:root = lsc#workspace#findMarker(a:file_path,
-      \ ['pubspec.yaml', '.dart_tool/', 'BUILD'])
-  if type(l:root) != type('') | return fnamemodify(a:file_path, ':h') | endif
-  return l:root
 endfunction
