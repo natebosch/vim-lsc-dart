@@ -21,6 +21,9 @@ function! lsc#dart#register() abort
 endfunction
 
 function! s:FindCommand() abort
+  if exists('g:lsc_dart_command_override')
+    return g:lsc_dart_command_override
+  endif
   if exists('g:lsc_dart_sdk_path')
     let l:bin = expand(g:lsc_dart_sdk_path).'/bin'
     let l:dart = l:bin.'/dart'
