@@ -12,6 +12,11 @@ plugin.
 
 CONFIGURATION                                   *lsc-dart-configure*
 
+                                                *lsc-dart-command-override*
+                                                *g:lsc_dart_command_override*
+Define the full command to run for the Dart language server. Overrides the SDK
+discovery and any values for |g:lsc_dart_enable_log|, and |g:lsc_dart_sdk_path|.
+
                                                 *lsc-dart-configure-log*
                                                 *g:lsc_dart_enable_log*
 Enable the Analysis Server instrumentation log file by setting
