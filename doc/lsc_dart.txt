@@ -23,12 +23,6 @@ Enable the Analysis Server instrumentation log file by setting
 `g:lsc_dart_enable_log` to `v:true`. When enabled the analysis server will write
 a log to a new temp file. This file will get cleaned up at vim exit.
 
-                                                *g:lsc_dart_enable_completion_ml*
-Enable the machine learning model for completion by passing the
-`--completion-model` flag pointing to the `bin/model/lexeme` directory in the
-SDK. Defaults to `v:true`, set to `v:false` to disable machine learning
-completion suggestions.
-
                                                 *g:lsc_dart_sdk_path*
 This plugin should auto detect the location of the Dart SDK as long as there
 is a `dart` or `flutter` command available in your `$PATH`. If the detection
